@@ -13,7 +13,7 @@ const findPokemonsWithBaseHPGreaterThan = async (baseHP) => {
   console.log(
     `RESULT FOR findPokemonsWithBaseHPGreaterThan: ${foundPokemons.length}`
   );
-  console.log(foundPokemons);
+  //console.log(foundPokemons);
   //console.log(foundPokemons);
   return foundPokemons;
 };
@@ -28,7 +28,7 @@ const findPokemonWithNameOrBaseHP = async (name, baseHP) => {
   console.log(
     `RESULT FOR findPokemonWithNameOrBaseHP: ${foundPokemons.length}`
   );
-  console.log(foundPokemons);
+  //console.log(foundPokemons);
 
   return foundPokemons;
 };

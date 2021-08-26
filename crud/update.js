@@ -2,20 +2,35 @@ const db = require("../db/models/index.js");
 
 const { Op } = require("sequelize");
 
-const updatePokemonHp = async () => {
+const updatePokemonHpByCategory = async (hp, category) => {
   const numberOfAffectedRecords = await db.SimplePokemon.update(
-    { baseHP: 100 },
+    { baseHp: hp },
     {
       where: {
         category: {
-          [Op.like]: "%Turtle%",
+          [Op.like]: "%" + category + "%",
         },
       },
     }
   );
   return numberOfAffectedRecords;
 };
-
+const updatePokemonWithRecords = async (hp, category) => {
+  const [numberOfAffectedRecords, updatedPokemons] =
+    await db.SimplePokemon.update(
+      { baseHp: 100 },
+      {
+        where: {
+          category: {
+            [Op.like]: "%Turtle%",
+          },
+        },
+        returning: true,
+      }
+    );
+  return [numberOfAffectedRecords, updatedPokemons];
+};
 module.exports = {
-  updatePokemonHp,
+  updatePokemonHpByCategory,
+  updatePokemonWithRecords,
 };
