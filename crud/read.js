@@ -17,6 +17,10 @@ const findPokemonsWithBaseHPGreaterThan = async (baseHP) => {
   //console.log(foundPokemons);
   return foundPokemons;
 };
+const findAllPokemons = async () => {
+  const foundPokemons = await db.SimplePokemon.findAll();
+  return foundPokemons;
+};
 
 const findPokemonWithNameOrBaseHP = async (name, baseHP) => {
   const foundPokemons = await db.SimplePokemon.findAll({
@@ -36,4 +40,5 @@ const findPokemonWithNameOrBaseHP = async (name, baseHP) => {
 module.exports = {
   findPokemonsWithBaseHPGreaterThan,
   findPokemonWithNameOrBaseHP,
+  findAllPokemons,
 };
