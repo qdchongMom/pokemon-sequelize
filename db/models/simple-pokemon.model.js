@@ -1,5 +1,5 @@
 "use strict";
-const { Model } = require("sequelize");
+const { Model, Sequelize } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
   class SimplePokemon extends Model {
@@ -14,13 +14,20 @@ module.exports = (sequelize, DataTypes) => {
   }
   SimplePokemon.init(
     {
+      // id: {
+      //   type: DataTypes.INTEGER,
+      //   autoIncrement: true,
+      //   primaryKey: true,
+      // },
       name: {
         type: DataTypes.STRING,
+        // unique: true,
       },
+
       japaneseName: {
         type: DataTypes.STRING,
       },
-      baseHP: {
+      baseHp: {
         type: DataTypes.INTEGER,
       },
       category: {
@@ -36,9 +43,18 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
     },
+
     {
       sequelize,
-      modelName: "SimplePokemon",
+      //modelName: "SimplePokemon",
+      tableName: "Simple_Pokemon",
+      indexes: [
+        {
+          unique: true,
+          fields: ["name"],
+        },
+      ],
+      underscored: true,
     }
   );
   return SimplePokemon;
